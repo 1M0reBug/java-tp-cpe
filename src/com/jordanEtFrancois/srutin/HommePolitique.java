@@ -48,12 +48,17 @@ public class HommePolitique {
         this.civilite = civilite;
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
-        return "HommePolitique{}";
+    @Override
+    public String toString() {
+        return  "[ civilite = " + civilite +
+                ", nom = '"  + nom + '\'' +
+                ", prenom = '" + prenom + '\'' +
+                ", nomParti = '" + nomParti + '\'' +
+                ']';
     }
 
     public static void main(String[] args) {
-        HommePolitique h = new HommePolitique(Civilite.HOMME, "Doe", "John"; "In tartiflette we trust");
+        HommePolitique h = new HommePolitique(Civilite.HOMME, "Doe", "John", "In tartiflette we trust");
+        System.out.println(h);
     }
 }
