@@ -48,6 +48,14 @@ public class HommePolitique {
         this.civilite = civilite;
     }
 
+
+    public boolean equals(HommePolitique h1) {
+        return h1.nom.equals(this.nom) &&
+                h1.prenom.equals(this.prenom) &&
+                h1.nomParti.equals(this.nomParti) &&
+                h1.civilite.equals(this.civilite);
+    }
+
     @Override
     public String toString() {
         return  "[ civilite = " + civilite +
