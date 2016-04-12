@@ -1,6 +1,6 @@
-/**
- * Created by jordan on 12/04/16.
- */
+package com.jordanEtFrancois.srutin;
+import fichiersPourTp.tp1.Civilite;
+
 public class HommePolitique {
 
     private Civilite civilite;
@@ -40,11 +40,20 @@ public class HommePolitique {
         this.nomParti = nomParti;
     }
 
-    public HommePolitique() {
+    public HommePolitique(Civilite civilite, String nom, String prenom, String nomParti) {
+
+        this.nom = nom;
+        this.prenom = prenom;
+        this.nomParti = nomParti;
+        this.civilite = civilite;
     }
 
     @java.lang.Override
     public java.lang.String toString() {
         return "HommePolitique{}";
+    }
+
+    public static void main(String[] args) {
+        HommePolitique h = new HommePolitique(Civilite.HOMME, "Doe", "John"; "In tartiflette we trust");
     }
 }
