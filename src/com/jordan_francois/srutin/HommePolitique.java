@@ -48,6 +48,13 @@ public class HommePolitique implements Comparable<HommePolitique>, Cloneable {
         this.civilite = civilite;
     }
 
+    public HommePolitique(HommePolitique h) {
+        this.nom = h.nom;
+        this.prenom = h.prenom;
+        this.nomParti = h.nomParti;
+        this.civilite = h.civilite;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
