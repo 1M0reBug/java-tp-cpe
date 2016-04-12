@@ -1,5 +1,5 @@
-package com.jordan_francois.srutin;
-import fichiersPourTp.tp1.Civilite;
+package com.jordan_francois.scrutin;
+import fichiersPourTP.tp1.Civilite;
 
 public class HommePolitique implements Comparable<HommePolitique>, Cloneable {
 
@@ -97,17 +97,4 @@ public class HommePolitique implements Comparable<HommePolitique>, Cloneable {
 
         return compare;
     }
-
-
-//    public static void main(String[] args) throws CloneNotSupportedException {
-//        HommePolitique h = new HommePolitique(Civilite.HOMME, "Doe", "John", "In tartiflette we trust");
-//
-//        HommePolitique h1 = (HommePolitique) h.clone();
-//
-//        h.setNomParti("trick");
-//
-//        System.out.println(h == h1);
-//        System.out.println(h.equals(h1));
-//        System.out.println(h.compareTo(h1));
-//    }
 }

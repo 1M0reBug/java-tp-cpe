@@ -1,10 +1,6 @@
-package com.jordan_francois.srutin;
+package com.jordan_francois.scrutin;
+import fichiersPourTP.tp1.Civilite;
 
-import fichiersPourTp.tp1.Civilite;
-
-/**
- * Created by jordan on 12/04/16.
- */
 public class CandidatScrutin {
 
     private HommePolitique candidat;
@@ -104,18 +100,5 @@ public class CandidatScrutin {
     public void incrementerNombreVoix()
     {
         this.nbVoix++;
-    }
-
-
-    public static void main(String[] args) {
-        HommePolitique hp = new HommePolitique(Civilite.HOMME, "John", "Doe", "In tartiflette we trust");
-        CandidatScrutin cs = null;
-        try {
-            cs = new CandidatScrutin(hp, 1460466792);
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(cs);
     }
 }

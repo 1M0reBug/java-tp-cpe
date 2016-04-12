@@ -1,4 +1,4 @@
-package com.jordan_francois.srutin;
+package com.jordan_francois.scrutin;
 
 /**
  * Created by jordan on 12/04/16.
