@@ -1,5 +1,5 @@
 package com.jordan_francois.scrutin;
-import fichiersPourTP.tp1.Civilite;
+import fichiersPourTp.tp1.Civilite;
 
 public class CandidatScrutin {
 
@@ -57,6 +57,8 @@ public class CandidatScrutin {
     public void incrementNbVoix() {
         this.nbVoix++;
     }
+
+    public void initializeNbVoix() {this.nbVoix = 0;}
 
     public int getDateScrutin() {
         return dateScrutin;

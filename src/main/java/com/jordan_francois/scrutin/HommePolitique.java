@@ -1,5 +1,5 @@
 package com.jordan_francois.scrutin;
-import fichiersPourTP.tp1.Civilite;
+import fichiersPourTp.tp1.Civilite;
 
 public class HommePolitique implements Comparable<HommePolitique>, Cloneable {
 
@@ -97,4 +97,5 @@ public class HommePolitique implements Comparable<HommePolitique>, Cloneable {
 
         return compare;
     }
+
 }

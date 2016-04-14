@@ -1,6 +1,6 @@
 package com.jordan_francois.scrutin;
 
-import fichiersPourTP.tp1.Civilite;
+import fichiersPourTp.tp1.Civilite;
 import org.junit.Before;
 import org.junit.Test;
 
