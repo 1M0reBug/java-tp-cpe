@@ -18,6 +18,25 @@ public class Scrutin {
     private int nbVotesValides;
     private int dateScrutin;
 
+    public List<CandidatScrutin> getCandidatScrutins() {
+        return candidatScrutins;
+    }
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public int getPopulationVotante() {
+        return populationVotante;
+    }
+
+    public int getNbVotesValides() {
+        return nbVotesValides;
+    }
+
+    public int getDateScrutin() {
+        return dateScrutin;
+    }
 
     public Scrutin(int population, int dateScrutin) {
         this.populationVotante = population;
@@ -81,8 +100,6 @@ public class Scrutin {
                         .get()
                         .incrementerNombreVoix();
             }
-
         }
     }
-
 }
