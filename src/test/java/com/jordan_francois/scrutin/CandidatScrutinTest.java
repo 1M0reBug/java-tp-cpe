@@ -26,4 +26,5 @@ public class CandidatScrutinTest {
         CandidatScrutin cs2 = new CandidatScrutin(hp, 1460466792);
         assertEquals(cs.compareCandidatScrutin(cs2), cs.equalsHommePolitique(hp));
     }
+
 }

@@ -2,10 +2,11 @@ package com.jordan_francois.scrutin;
 
 import fichiersPourTp.tp2.Vote;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by jordan on 14/04/16.
@@ -101,5 +102,14 @@ public class Scrutin {
                         .incrementerNombreVoix();
             }
         }
+    }
+
+    public List<Candidat> getResult() {
+        this.countTheVotes();
+        List<Candidat> ret = new ArrayList<Candidat>();
+        this.candidatScrutins.stream().forEach(
+                e -> ret.add(new Candidat(e, (double) e.getNbVoix() / this.nbVotesValides))
+        );
+        return ret;
     }
 }

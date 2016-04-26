@@ -10,6 +10,7 @@ import fichiersPourTp.tp1.*;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -73,6 +74,11 @@ public class Election {
 		System.out.println(scrutin);
 
         System.out.println(scrutin.tauxParticipation());
+
+		List<Candidat> result = scrutin.getResult();
+		Collections.sort(result, new CandidatPercentageComparator().reversed());
+
+		System.out.println( result.toString() );
     }
 
 
