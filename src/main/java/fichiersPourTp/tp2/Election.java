@@ -9,11 +9,10 @@ import fichiersPourTp.tp1.*;
  */
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
-
+import javax.swing.text.StringContent;
+import javax.swing.text.html.HTMLDocument;
+import javax.swing.text.html.ListView;
+import java.util.*;
 
 
 /**
@@ -75,11 +74,178 @@ public class Election {
 
         System.out.println(scrutin.tauxParticipation());
 
+		// 1.0
 		List<Candidat> result = scrutin.getResult();
-		Collections.sort(result, new CandidatPercentageComparator().reversed());
 
-		System.out.println( result.toString() );
+		// 1.1
+		System.out.println(result);
+
+		// 1.2
+		Collections.sort(result);
+
+		// 1.3
+		Collections.sort(result, new CandidatPercentageComparator().reversed());
+		System.out.println(result);
+
+		// 1.4.1
+		Collections.sort(result, new CandidatPercentageComparator());
+		System.out.println(result);
+
+		// 1.4.2
+		result.sort(new CandidatPercentageComparator());
+		System.out.println(result);
+
+		// 1.5.1
+		Candidat max = result.stream().max(new CandidatPercentageComparator()).get();
+
+		// 1.5.2
+		result.sort(new CandidatPercentageComparator().reversed());
+		System.out.println(result.get(0));
+
+		// -----------------------------
+
+		// 2.0
+		result = scrutin.getResult();
+
+		// 2.1
+		System.out.println(result.get(1));
+
+		// 2.2
+		System.out.println(
+				result.indexOf( Collections.max(result, new CandidatPercentageComparator()) )
+		);
+
+		// 2.3
+		List<Candidat> clone = new ArrayList<Candidat>(result);
+
+		// 2.4.1
+		for(Candidat c : result) {
+			if(c.getPourcentage() < 0.2) {
+				clone.remove(c);
+			}
+		}
+
+		System.out.println(clone);
+
+		// 2.4.1
+		clone = new ArrayList<Candidat>(result);
+		Iterator<Candidat> iterator = clone.iterator();
+		while(iterator.hasNext()) {
+			Candidat courant = iterator.next();
+			if(courant.getPourcentage() < 0.2) {
+				clone.remove(iterator);
+			}
+		}
+
+		System.out.println(clone);
+
+		// 2.5
+		Iterator<Candidat> iterator1 = result.iterator();
+		while(iterator1.hasNext()) {
+			Candidat courant = iterator1.next();
+			if(clone.indexOf(courant) < 0) {
+				result.remove(courant);
+			}
+		}
+
+		// 2.6.1
+		if(result.equals(clone)) {
+			System.out.println("Les deux listes contiennent les mêmes éléments");
+		}
+
+		// 2.6.2
+		if(result.containsAll(clone) && clone.containsAll(result)) {
+			System.out.println("Les deux listes contiennent les mêmes éléments");
+		}
+
+		// 2.7
+		clone.clear();
+
+		// 2.8.1
+		if(clone.isEmpty()) {
+			System.out.println("La liste clone est vide");
+		}
+
+		// 2.8.2
+		if(clone.equals(new ArrayList<>())) {
+			System.out.println("La liste clone est vide");
+		}
+
+		// -------------------------------------------
+
+		// 3.0
+		result = scrutin.getResult();
+
+		// 3.1
+		Map<Civilite, List<String>> map = createMap(result);
+
+		// 3.2
+		Set<Map.Entry<Civilite, List<String>>> set = map.entrySet();
+
+		// 3.3
+		System.out.println(set);
+
+		// 3.4
+		System.out.println(displayMap(map));
+
+		// 3.5
+		System.out.println("Nombre d'hommes : " + map.get(Civilite.HOMME).size());
+
+		// 3.6
+		Set<Civilite> civilites = map.keySet();
+		System.out.println(civilites);
+
+		// 3.7
+		map.remove(Civilite.FEMME);
+		System.out.println(map);
+
+		// 3.8
+		System.out.println(civilites);
+
+		// 3.10
+		TreeSet<Civilite> civSet = new TreeSet<>();
+		civSet.add(Civilite.FEMME);
+		civSet.add(Civilite.HOMME);
+
+		// 3.11
+		SortedSet<Civilite> sortedSet = civSet.descendingSet();
+		System.out.println(sortedSet);
+
+		// 3.12
+		civSet.remove(Civilite.FEMME);
+
+		System.out.println(sortedSet);
+		System.out.println(civSet);
+
+
+
     }
+
+	private static Map<Civilite, List<String>> createMap(List<Candidat> candidats) {
+		Map<Civilite, List<String>> map = new TreeMap<>();
+
+		map.put(Civilite.FEMME, new LinkedList<String>());
+		map.put(Civilite.HOMME, new LinkedList<String>());
+
+		candidats.stream().forEach(e -> {
+			map.get(e.getCandidatScrutin().getCiviliteCandidat()).add(e.getCandidatScrutin().getNomCandidat());
+		});
+
+		return map;
+	}
+
+	private static String displayMap(Map<Civilite, List<String>> map) {
+		StringBuffer ret = new StringBuffer("");
+		Set<Civilite> keys = map.keySet();
+		for(Civilite key : keys) {
+			ret.append(key + " :\n");
+			for(String nom : map.get(key)) {
+				ret.append("    " + nom + "\n");
+			}
+		}
+
+		return ret.toString();
+	}
 
 
 	private static Scrutin simulerVotes(List< HommePolitique> hommePolitiques, int votants,

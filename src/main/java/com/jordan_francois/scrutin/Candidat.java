@@ -1,9 +1,11 @@
 package com.jordan_francois.scrutin;
 
+import java.util.Comparator;
+
 /**
  * Created by jordan on 12/04/16.
  */
-public class Candidat {
+public class Candidat implements Comparable<Candidat>{
     private CandidatScrutin candidatScrutin;
     private double pourcentage;
 
@@ -55,5 +57,10 @@ public class Candidat {
         temp = Double.doubleToLongBits(getPourcentage());
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @Override
+    public int compareTo(Candidat o) {
+        return this.candidatScrutin.getNomCandidat().compareTo(o.getCandidatScrutin().getNomCandidat());
     }
 }
